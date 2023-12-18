@@ -83,10 +83,25 @@ type userInformation = {
     name: string;
     age: number;
 }
-function printUserName(info:userInformation){
+function printUserName(info: userInformation) {
     console.log(info.name)
 }
-printUserName({name:'Ali',age:30})
+printUserName({ name: 'Ali', age: 30 })
 
+// rest parameters and destructured
+type Detail = {
+    isBoy?: boolean;
+    age?: number;
+}
 
+function showDetail(name: string, { isBoy = false, age }: Detail = {}) {
+    console.log(name,isBoy, age)
+    return //some code
+}
 
+showDetail('naser',{isBoy:true,age:45})
+
+function sum(...numbers:number[]){
+    console.log(numbers)
+}
+sum(8,5,9,4,5)
