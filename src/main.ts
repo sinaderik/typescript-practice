@@ -95,13 +95,51 @@ type Detail = {
 }
 
 function showDetail(name: string, { isBoy = false, age }: Detail = {}) {
-    console.log(name,isBoy, age)
+    console.log(name, isBoy, age)
     return //some code
 }
 
-showDetail('naser',{isBoy:true,age:45})
+showDetail('naser', { isBoy: true, age: 45 })
 
-function sum(...numbers:number[]){
+function sum(...numbers: number[]) {
     console.log(numbers)
 }
-sum(8,5,9,4,5)
+sum(8, 5, 9, 4, 5)
+
+// Define a function as a variable
+function calculation(a: number, b: number, callBack: CalcType) {
+    callBack(a + b)
+}
+
+calculation(5, 6, (sum) => {
+    console.log(sum)
+})
+
+type CalcType = (input: number) => void
+
+// Union Types
+
+let x: number | string
+x = 10;
+x = '10';
+
+type Todo = {
+    subject: string;
+    status: 'completed' | 'incomplete' | 'draft'
+}
+type User = {
+    id: number;
+    name: string;
+}
+
+type TodoUser = Todo | User
+
+const myTodo: Todo = {
+    subject: 'Typescript',
+    status: 'completed'
+}
+
+const todoUser:TodoUser={
+    id:20,
+    name:'sina',
+}
