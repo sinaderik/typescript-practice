@@ -139,7 +139,33 @@ const myTodo: Todo = {
     status: 'completed'
 }
 
-const todoUser:TodoUser={
-    id:20,
-    name:'sina',
+const todoUser: TodoUser = {
+    id: 20,
+    name: 'sina',
+}
+
+// Intersection Types 
+// An intersection type is combined of two or more types 
+
+type teacher = {
+    name: string;
+    age: number;
+}
+type office = {
+    code: number | string;
+    phone?: string | number
+    address: string
+}
+
+// interface position extends teacher, office{}
+
+// type position = teacher & office & { phone: string }
+type position = teacher & office
+
+const newTeacher: position = {
+    name: 'sina',
+    age: 25,
+    code: 300,
+    address: 'USA',
+    // phone: '+1-445-9225-7185'
 }
