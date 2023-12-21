@@ -169,3 +169,11 @@ const newTeacher: position = {
     address: 'USA',
     // phone: '+1-445-9225-7185'
 }
+
+// Read only 
+
+
+const numberArray: readonly number[] = [2,3,947,41,2,48,10]
+
+// using push method will cause an error because numberArray is read only
+// numberArray.push(333)
