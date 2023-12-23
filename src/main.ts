@@ -69,7 +69,7 @@ function calc(number1: number, number2: number): number {
 }
 
 // got error because Im explicitly defining the input values 
-printName({ name: 'Reza', age: 26 })
+// printName({ name: 'Reza', age: 26 })
 
 // but if i do the code below i dont get error 
 const info = {
@@ -171,9 +171,69 @@ const newTeacher: position = {
 }
 
 // Read only 
-
-
-const numberArray: readonly number[] = [2,3,947,41,2,48,10]
+const numberArray: readonly number[] = [2, 3, 947, 41, 2, 48, 10]
 
 // using push method will cause an error because numberArray is read only
-// numberArray.push(333)
+// numberArray.push(333) 
+
+
+// Keyof
+// with this property we can access the key and values of a object
+type Motor = {
+    name: string;
+    model: number;
+}
+
+const honda: Motor = {
+    name: 'cb 1300',
+    model: 2020
+}
+
+const motorName = getValue("name", honda)
+console.log(motorName)
+function getValue(key: keyof Motor, object: Motor) {
+    return object[key]
+}
+
+// Typeof property in typescript is not like Javascript , with typeof in typescript we can set type of a variable to type of another variable
+
+const body = {
+    eyeColor: 'black',
+    weight: 80
+}
+
+const myFirend: typeof body = {
+    eyeColor: 'green',
+    weight: 70,
+}
+const peopleInfo: (typeof body)[] = []
+peopleInfo.push(myFirend)
+peopleInfo.push({ eyeColor: 'yellow', weight: 79 })
+
+
+// index type
+type SkillLevel={
+    code:1000,
+    level:'beginner'|'intermediate'|'advanced'
+}
+
+// instead of writing the function like this 
+// function getLevel(level:'beginner'|'intermediate'|'advanced'){
+//     console.log(level) 
+// }
+
+// you can write it like this one
+function getLevel(level:SkillLevel['level']){
+    console.log(level) 
+}
+
+const array=['text 1','text 2',false]
+type GeneralArray=(typeof array)[number]
+
+const q = {
+    name: 'sina',
+    age: 25,
+    isProgrammer: true
+}
+
+type Q = (typeof q)[keyof typeof q]
